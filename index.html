@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding-top: 50px;
+        }
+        .box{
+            width: 500px;
+            height: auto;
+            border: 1px solid black;
+            margin-left: 50px;
+            margin-top: 50px;
+            border-radius: 30px;
+            background-color: coral;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            margin: auto;
+           
+        }
+        .lbl{
+            text-align: center;
+            margin-top: 20px;
+            font-family: cursive;
+        }
+        #btn{
+            width: 100px;
+            height: 40px;
+            border-radius: 30px;
+            text-align: center;
+        }
+        #totalmoney{
+            border-radius: 20px;
+            min-height: 30px;
+            min-width: 100px;
+            
+        }
+        #cost{
+            border-radius: 20px;
+            min-height: 30px;
+            min-width: 100px;
+            
+        }
+        #result{
+            width: 200px;
+            height: 30px;
+            font-family: cursive;
+            border-radius: 20px;
+            border: 2px solid black;
+            
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+      <center>  <lable class="lbl"  >Enter Total Amount:</lable><br><br>
+        <input type="text" id="totalmoney"><br><br>
+        <label class="lbl" >Enter Price of each chocolate:</label><br><br>
+        <input type="text" id="cost"><br><br>
+        <button id="btn" onclick="count()" >Count</button><br><br>
+        <label class="lbl" >Number of chocolates you have:</label><br><br>
+        <div id='result'></div></center>
+
+    </div>
+    <script>
+          
+          function count(){
+
+            var totalmoney=document.getElementById('totalmoney').value 
+            var cost=document.getElementById('cost').value 
+
+            if (isNaN(totalmoney) || isNaN(cost) || totalmoney < 0 || cost <= 0) {
+                
+                document.getElementById('result').innerHTML='invalid input'
+
+            }
+             let chocolates=(totalmoney/cost)
+             console.log(chocolates)
+             let totalChocolates=chocolates
+             let wrappers=chocolates
+             while (wrappers >= 3) {
+               const additionalChocolates = Math.floor(wrappers / 3);
+               totalChocolates += additionalChocolates;
+               const remainingWrappers = wrappers % 3;
+               wrappers = additionalChocolates + remainingWrappers;
+            }
+  
+              document.getElementById('result').innerHTML=totalChocolates
+  }
+
+              </script>
+</body>
+</html>
